@@ -1,5 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(1L, "Hawash", "Ahmad", Positions.QA, "01.01.1990"));
+        employees.add(new Employee(2L, "Ahmad", "Khateeb", Positions.BE, "01.01.1990"));
+        employees.add(new Employee(3L, "yassen", "mohammad", Positions.FE, "01.01.1990"));
+        employees.add(new Employee(4L, "Amneh", "khaled", Positions.HR, "01.01.1990"));
+        employees.add(new Employee(5L, "Walaa", "Ahmad", Positions.QA, "01.01.1990"));
+
+
+        Stream<Employee> stream = employees.stream();
+        String ids = stream.map(employee -> employee.getId().toString()).collect(Collectors.joining(","));
+
+        System.out.println(ids);
     }
 }
