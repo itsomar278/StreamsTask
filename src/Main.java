@@ -14,9 +14,32 @@ public class Main {
         employees.add(new Employee(5L, "Walaa", "Ahmad", Positions.QA, "01.01.1990"));
 
 
-        Map<Long, Employee> empMap = employees.stream()
-                .collect(Collectors.toMap(employee -> employee.getId(), employee -> employee));
+        Stream<Employee> stream = employees.stream();
+        stream.forEach(employee -> PrintSalary(employee));
+    }
 
-        System.out.println(empMap);
+    public static void PrintSalary(Employee employee)
+    {
+        switch (employee.getPosition().toString())
+        {
+            case "QA":
+                System.out.println("1000");
+                break;
+            case "BE":
+                System.out.println("1500");
+                break;
+            case "FE":
+                System.out.println("1300");
+                break;
+            case "HR":
+                System.out.println("1200");
+                break;
+            default:
+                System.out.println("0");
+
+        }
+    }
+    {
+
     }
 }
