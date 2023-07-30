@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,9 +14,9 @@ public class Main {
         employees.add(new Employee(5L, "Walaa", "Ahmad", Positions.QA, "01.01.1990"));
 
 
-        Stream<Employee> stream = employees.stream();
-        String ids = stream.map(employee -> employee.getId().toString()).collect(Collectors.joining(","));
+        Map<Long, Employee> empMap = employees.stream()
+                .collect(Collectors.toMap(employee -> employee.getId(), employee -> employee));
 
-        System.out.println(ids);
+        System.out.println(empMap);
     }
 }
